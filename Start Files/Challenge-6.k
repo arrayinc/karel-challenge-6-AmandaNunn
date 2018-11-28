@@ -34,3 +34,43 @@ at the west end of the street, but should now be facing west.
 */
 
 import "turns";
+
+function SolveChallenge(){
+	while(frontIsClear()){
+		checkHouses();
+		move();
+	}
+	checkHouses();
+	returnHome();
+}
+
+function checkHouses(){
+	if(leftIsClear()){
+			turnLeft(); 
+			getCandy(); 
+			turnLeft();
+		}
+		
+		if(rightIsClear()){
+			turnRight();
+			getCandy();
+			turnRight();
+		}
+}
+
+function getCandy(){
+	move();
+	if(beepersPresent()){
+		pickBeeper();
+	}
+	turnAround();
+	move();
+}
+
+function returnHome(){
+	turnAround();
+	while(frontIsClear()){
+		move();
+	}
+	turnAround();
+}
